@@ -1,0 +1,24 @@
+{
+  "name": "secp256k1-verify",
+  "version": "1.0.0",
+  "description": "A simple microservice to check how cryptography works",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msklyarov/secp256k1-verify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msklyarov/secp256k1-verify/issues"
+  },
+  "homepage": "https://github.com/msklyarov/secp256k1-verify#readme",
+  "dependencies": {
+    "elliptic": "^6.5.4",
+    "express": "^4.18.2"
+  }
+}
