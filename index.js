@@ -5,6 +5,8 @@ const ec = new elliptic.ec("secp256k1");
 const app = express();
 app.use(express.json());
 
+app.use("/", express.static("public"));
+
 app.post("/verify", function (req, res) {
   const { message, signedMessage, publikKey } = req.body;
 
