@@ -3,7 +3,7 @@ const ec = new elliptic.ec("secp256k1");
 
 window.onSubmit = function () {
   const privateKey = document.getElementById("private").value;
-  const textToSign = document.getElementById("text").value;
+  const addressToSign = document.getElementById("address").value;
 
   const keiPair = ec.keyPair({ priv: privateKey, privEnc: "hex" });
 
@@ -11,7 +11,7 @@ window.onSubmit = function () {
 
   console.log("PublicKey:", publicKey);
 
-  const result = JSON.stringify(ec.sign(textToSign, privateKey, "hex"));
+  const result = JSON.stringify(ec.sign(addressToSign, privateKey, "hex"));
 
   console.log("Signed text", result);
 };
