@@ -11,7 +11,7 @@ window.onSubmit = function () {
 
   console.log("PublicKey:", publicKey);
 
-  const result = JSON.stringify(ec.sign(addressToSign, privateKey, "hex"));
+  const result = btoa(JSON.stringify(ec.sign(addressToSign, privateKey, "hex")));
 
   console.log("Signed text", result);
 };
