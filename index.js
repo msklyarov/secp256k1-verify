@@ -16,8 +16,8 @@ app.post("/verify", function (req, res) {
 
     res.json({
       success:
-        ec.verify(address, JSON.parse(signedAddress), publicKey, "hex") &&
-        address.toLowerCase() === addressFromPubKey.toLowerCase(),
+        ec.verify(address, JSON.parse(Buffer.from(signedAddress, "base64").toString("binary")), publicKey, "hex") &&
+        address === addressFromPubKey,
     });
   } catch (e) {
     res.json({ success: false, error: e.toString() });
