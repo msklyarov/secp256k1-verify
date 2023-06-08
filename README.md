@@ -1,10 +1,10 @@
 # secp256k1-verify
 
-A simple microservice to check how cryptography works
+#A simple microservice to check how cryptography works
 
-npm i
-browserify main.js > public/bundle.js
+##npm i
+##browserify main.js > public/bundle.js
 
-npm start
+##npm start
 
-see console
+##see console
