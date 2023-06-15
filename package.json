@@ -19,6 +19,7 @@
   "homepage": "https://github.com/msklyarov/secp256k1-verify#readme",
   "dependencies": {
     "elliptic": "^6.5.4",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "js-sha3": "^0.8.0"
   }
 }
