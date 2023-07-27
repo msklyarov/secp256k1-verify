@@ -10,14 +10,14 @@ const app = express();
 app.use(express.json());
 
 app.post('/verify', function (req, res) {
-    const {uuid, sig_r, sig_s} = req.body;
+    const {uuid, sigR, sigS} = req.body;
 
     const hexToDecimal = x => ec.keyFromPrivate(x, 'hex').getPrivate().toString(10);
 
     try {
         const objSignature = {
-            r: JSON.parse(Buffer.from(sig_r, 'base64').toString('binary')),
-            s: JSON.parse(Buffer.from(sig_s, 'base64').toString('binary')),
+            r: JSON.parse(Buffer.from(sigR, 'base64').toString('binary')),
+            s: JSON.parse(Buffer.from(sigS, 'base64').toString('binary')),
             recoveryParam: 1
         };
 
