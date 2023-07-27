@@ -12,18 +12,22 @@ app.use(express.json());
 app.use('/', express.static('public'));
 
 app.post('/verify', function (req, res) {
-    const {uuid, signature} = req.body;
+    const {uuid, sig_r, sig_s} = req.body;
 
     const hexToDecimal = x => ec.keyFromPrivate(x, 'hex').getPrivate().toString(10);
 
     try {
-        const objSignature = JSON.parse(Buffer.from(signature, 'base64').toString('binary'));
+        const objSignature = {
+            r: JSON.parse(Buffer.from(sig_r, 'base64').toString('binary')),
+            s: JSON.parse(Buffer.from(sig_s, 'base64').toString('binary')),
+            recoveryParam: 1
+        };
 
         const publicKey = ec
             .recoverPubKey(hexToDecimal(uuid), objSignature, objSignature.recoveryParam, 'hex')
             .encodeCompressed('hex');
 
-        if (!ec.verify(uuid, JSON.parse(Buffer.from(signature, 'base64').toString('binary')), publicKey, 'hex')) {
+        if (!ec.verify(uuid, objSignature, publicKey, 'hex')) {
             return res.json({
                 success: false,
                 error: 'Wrong signature'
